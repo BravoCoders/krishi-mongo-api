@@ -44,4 +44,5 @@ app.post("/api/register", async (req, res) => {
   }
 });
 
-module.exports = app;
+const server = require("http").createServer(app);
+module.exports = (req, res) => app(req, res);
