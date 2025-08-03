@@ -1,12 +1,11 @@
 {
-  "name": "krishi-api",
+  "name": "krishi-mongo-api",
   "version": "1.0.0",
-  "main": "api/register.js",
-  "scripts": {
-    "start": "node api/register.js"
-  },
+  "main": "index.js",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.2.2",
+    "nodemailer": "^6.9.1"
   }
 }
