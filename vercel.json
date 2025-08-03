@@ -7,7 +7,7 @@
   ],
   "routes": [
     { "src": "/api/register", "dest": "api/register.js" },
-    { "src": "/api/send-sms", "dest": "api/save-sms.js" },
+    { "src": "/api/save-sms", "dest": "api/save-sms.js" },
     { "src": "/api/send-email", "dest": "api/send-email.js" }
   ]
 }
