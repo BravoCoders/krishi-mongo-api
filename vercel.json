@@ -2,12 +2,12 @@
   "version": 2,
   "builds": [
     { "src": "api/register.js", "use": "@vercel/node" },
-    { "src": "api/send-sms.js", "use": "@vercel/node" },
+    { "src": "api/save-sms.js", "use": "@vercel/node" },
     { "src": "api/send-email.js", "use": "@vercel/node" }
   ],
   "routes": [
     { "src": "/api/register", "dest": "api/register.js" },
-    { "src": "/api/send-sms", "dest": "api/send-sms.js" },
+    { "src": "/api/send-sms", "dest": "api/save-sms.js" },
     { "src": "/api/send-email", "dest": "api/send-email.js" }
   ]
 }
