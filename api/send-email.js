@@ -12,11 +12,13 @@ const getRawBody = (req) =>
 module.exports = async (req, res) => {
   try {
     const raw = await getRawBody(req);
-    const { email, subject, message } = JSON.parse(raw);
+    const { subject, message } = req.body;
 
-    if (!email || !message) {
-      return res.status(400).json({ error: "Email and message are required" });
-    }
+const email = "mohammadsalmankhan213@gmail.com"; // ✅ Replace with your own Gmail address
+
+if (!message) {
+  return res.status(400).json({ error: "Message is required" });
+}
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
