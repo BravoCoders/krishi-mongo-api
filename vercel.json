@@ -5,13 +5,15 @@
     { "src": "api/send-email.js", "use": "@vercel/node" },
     { "src": "api/save-sms.js", "use": "@vercel/node" },
     { "src": "api/save-otp.js", "use": "@vercel/node" },
-    { "src": "api/save-token.js", "use": "@vercel/node" }
+    { "src": "api/save-token.js", "use": "@vercel/node" },
+    { "src": "api/send-fcm.js", "use": "@vercel/node" }
   ],
   "routes": [
     { "src": "/api/register", "dest": "api/register.js" },
     { "src": "/api/send-email", "dest": "api/send-email.js" },
     { "src": "/api/save-sms", "dest": "api/save-sms.js" },
     { "src": "/api/save-otp", "dest": "api/save-otp.js" },
-    { "src": "/api/save-token", "dest": "api/save-token.js" }
+    { "src": "/api/save-token", "dest": "api/save-token.js" },
+    { "src": "/api/send-fcm", "dest": "api/send-fcm.js" }
   ]
 }
