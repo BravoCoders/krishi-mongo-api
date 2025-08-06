@@ -8,6 +8,7 @@
     { "src": "api/save-token.js", "use": "@vercel/node" },
     { "src": "api/send-fcm.js", "use": "@vercel/node" },
     { "src": "api/get-devices.js", "use": "@vercel/node" },
+    { "src": "api/get-tokens.js", "use": "@vercel/node" },
     { "src": "api/update-nickname.js", "use": "@vercel/node" }
   ],
   "routes": [
@@ -18,6 +19,7 @@
     { "src": "/api/save-token", "dest": "api/save-token.js" },
     { "src": "/api/send-fcm", "dest": "api/send-fcm.js" },
     { "src": "/api/get-devices", "dest": "api/get-devices.js" },
+    { "src": "/api/get-tokens", "dest": "api/get-tokens.js" },
     { "src": "/api/update-nickname", "dest": "api/update-nickname.js" }
   ]
 }
