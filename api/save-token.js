@@ -1,45 +1,63 @@
-// api/save-token.js
-
 const mongoose = require("mongoose");
 
 const tokenSchema = new mongoose.Schema({
   token: String,
-  deviceId: String,
-  timestamp: { type: Date, default: Date.now }
+  android_id: String,
+  device_model: String,
+  manufacturer: String,
+  fingerprint: String,
+  timestamp: Number,
+  datetime: String
 });
 
 const Token = mongoose.models.Token || mongoose.model("Token", tokenSchema);
 
-// MongoDB connection
+let conn = null;
 async function connectToDB() {
-  if (mongoose.connection.readyState === 0) {
-    await mongoose.connect(process.env.MONGODB_URI, {
+  if (conn == null) {
+    conn = await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
-      useUnifiedTopology: true,
+      useUnifiedTopology: true
     });
   }
 }
 
 module.exports = async (req, res) => {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
-  const { token, deviceId } = req.body;
-
-  if (!token) {
-    return res.status(400).json({ error: "FCM token is required" });
+    return res.status(405).json({ error: "Only POST allowed" });
   }
 
   try {
+    const {
+      token,
+      android_id,
+      device_model,
+      manufacturer,
+      fingerprint,
+      timestamp,
+      datetime
+    } = req.body;
+
+    if (!token || !android_id || !device_model) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
     await connectToDB();
 
-    const newToken = new Token({ token, deviceId });
+    const newToken = new Token({
+      token,
+      android_id,
+      device_model,
+      manufacturer,
+      fingerprint,
+      timestamp,
+      datetime
+    });
+
     await newToken.save();
 
-    return res.status(200).json({ message: "Token saved successfully" });
+    return res.status(200).json({ message: "Token and device info saved" });
   } catch (error) {
-    console.error("Save Token Error:", error.message);
     return res.status(500).json({ error: "Server error", details: error.message });
   }
 };
