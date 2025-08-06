@@ -1,23 +1,30 @@
-// api/get-tokens.js
+import { MongoClient } from "mongodb";
 
-import dbConnect from "../lib/dbConnect";
-import Device from "../models/Device";
+const uri = process.env.MONGO_URI; // Make sure this is set in Vercel dashboard
+const client = new MongoClient(uri);
+const DB_NAME = "Krishi-Mitra-DB";
+const COLLECTION = "DeviceTokens";
 
 export default async function handler(req, res) {
-  if (req.method !== "GET") {
-    return res.status(405).json({ success: false, message: "Method not allowed" });
-  }
+  const secret = req.headers["x-access-key"];
 
-  const secret = req.query.secret || req.headers['x-api-key'];
   if (secret !== "BravoAccess321") {
-    return res.status(401).json({ success: false, message: "Unauthorized" });
+    return res.status(403).json({ error: "Unauthorized access" });
   }
 
-  try {
-    await dbConnect();
-    const devices = await Device.find({});
-    return res.status(200).json({ success: true, data: devices });
-  } catch (error) {
-    return res.status(500).json({ success: false, message: "Failed to fetch devices" });
+  if (req.method === "GET") {
+    try {
+      await client.connect();
+      const collection = client.db(DB_NAME).collection(COLLECTION);
+      const devices = await collection.find().toArray();
+      res.status(200).json({ data: devices });
+    } catch (err) {
+      console.error("Error fetching devices:", err);
+      res.status(500).json({ error: "Internal server error" });
+    } finally {
+      await client.close();
+    }
+  } else {
+    res.status(405).json({ error: "Method not allowed" });
   }
 }
