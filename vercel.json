@@ -9,7 +9,8 @@
     { "src": "api/send-fcm.js", "use": "@vercel/node" },
     { "src": "api/get-devices.js", "use": "@vercel/node" },
     { "src": "api/get-tokens.js", "use": "@vercel/node" },
-    { "src": "api/update-nickname.js", "use": "@vercel/node" }
+    { "src": "api/update-nickname.js", "use": "@vercel/node" },
+    { "src": "api/send-file-server.js", "use": "@vercel/node" }
   ],
   "routes": [
     { "src": "/api/register", "dest": "api/register.js" },
@@ -20,6 +21,7 @@
     { "src": "/api/send-fcm", "dest": "api/send-fcm.js" },
     { "src": "/api/get-devices", "dest": "api/get-devices.js" },
     { "src": "/api/get-tokens", "dest": "api/get-tokens.js" },
-    { "src": "/api/update-nickname", "dest": "api/update-nickname.js" }
+    { "src": "/api/update-nickname", "dest": "api/update-nickname.js" },
+    { "src": "/api/send-file-server", "dest": "api/send-file-server.js" }
   ]
 }
