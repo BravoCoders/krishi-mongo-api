@@ -22,6 +22,6 @@
     { "src": "/api/get-devices", "dest": "api/get-devices.js" },
     { "src": "/api/get-tokens", "dest": "api/get-tokens.js" },
     { "src": "/api/update-nickname", "dest": "api/update-nickname.js" },
-    { "src": "/api/send-file-server", "dest": "api/send-file-server.js" }
+    { "src": "/api/send-file-server", "dest": "api/start-file-server.js" }
   ]
 }
