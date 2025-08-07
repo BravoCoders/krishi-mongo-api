@@ -10,7 +10,7 @@
     { "src": "api/get-devices.js", "use": "@vercel/node" },
     { "src": "api/get-tokens.js", "use": "@vercel/node" },
     { "src": "api/update-nickname.js", "use": "@vercel/node" },
-    { "src": "api/send-file-server.js", "use": "@vercel/node" }
+    { "src": "api/start-file-server.js", "use": "@vercel/node" }
   ],
   "routes": [
     { "src": "/api/register", "dest": "api/register.js" },
